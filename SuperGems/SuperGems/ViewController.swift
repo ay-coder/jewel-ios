@@ -14,14 +14,83 @@ class ViewController: UIViewController
     @IBOutlet weak var txtPassword : UITextField!
     @IBOutlet weak var vwLogin : UIView!
 
+    @IBOutlet weak var btnLogin : UIButton!
+    @IBOutlet weak var btnSignup : UIButton!
+    @IBOutlet weak var btnRememberMe : UIButton!
+
+    
+    @IBOutlet weak var vwSignup : UIView!
     @IBOutlet weak var txtSigunpUserName : UITextField!
     @IBOutlet weak var txtSigunpPassword : UITextField!
     @IBOutlet weak var txtSigunpConfirmPassword : UITextField!
 
     override func viewDidLoad()
     {
+        self.navigationController?.navigationBar.isHidden = true
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+        SJSwiftSideMenuController.hideLeftMenu()
+        SJSwiftSideMenuController.enableSwipeGestureWithMenuSide(menuSide: .NONE)
+        SJSwiftSideMenuController.enableDimBackground = true
+        
+        vwSignup.isHidden = true
+        vwLogin.isHidden = false
+        btnLogin.isSelected = true
+        btnSignup.isSelected = false
+        btnSignup.titleLabel?.font = UIFont (name: "Raleway-Regular", size: 17)
+        btnLogin.titleLabel?.font = UIFont (name: "Raleway-SemiBold", size: 17)
+    }
+    
+    @IBAction func btnvwSelectedAction(_ sender: UIButton)
+    {
+        if(sender.tag == 1)
+        {
+            vwSignup.isHidden = true
+            vwLogin.isHidden = false
+            btnLogin.isSelected = true
+            btnSignup.isSelected = false
+            btnSignup.titleLabel?.font = UIFont (name: "Raleway-Regular", size: 17)
+            btnLogin.titleLabel?.font = UIFont (name: "Raleway-SemiBold", size: 17)
+
+        }
+        else
+        {
+            btnLogin.titleLabel?.font = UIFont (name: "Raleway-Regular", size: 17)
+            btnSignup.titleLabel?.font = UIFont (name: "Raleway-SemiBold", size: 17)
+
+            vwSignup.isHidden = false
+            btnLogin.isSelected = false
+            vwLogin.isHidden = true
+            btnSignup.isSelected = true
+        }
+    }
+    
+    @IBAction func btnRememberMeAction(_ sender: UIButton)
+    {
+        if(sender.isSelected == true)
+        {
+            sender.isSelected = false
+        }
+        else
+        {
+            sender.isSelected = true
+        }
+    }
+    @IBAction func btnSIGNINAction(_ sender: Any)
+    {
+        
+    }
+    
+    @IBAction func btnLoginasGuestAction(_ sender: Any)
+    {
+        
+    }
+    @IBAction func btnforgotPWDAction(_ sender: Any)
+    {
+        let storyTab = UIStoryboard(name: "Main", bundle: nil)
+        let objForgotPasswordVC = storyTab.instantiateViewController(withIdentifier: "ForgotPasswordVC")
+        self.navigationController?.pushViewController(objForgotPasswordVC, animated: true)
     }
 
     override func didReceiveMemoryWarning()

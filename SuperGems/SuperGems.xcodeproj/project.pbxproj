@@ -85,6 +85,8 @@
 		D367CD981FC1D1F9001AFFF4 /* DashboradVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D367CD971FC1D1F9001AFFF4 /* DashboradVC.swift */; };
 		D367CD9A1FC1D208001AFFF4 /* AddtoCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D367CD991FC1D208001AFFF4 /* AddtoCartVC.swift */; };
 		D367CD9D1FC1D22D001AFFF4 /* CheckoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D367CD9C1FC1D22D001AFFF4 /* CheckoutVC.swift */; };
+		D39CFF251FC5F4CD00A2189F /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CFF231FC5F4CD00A2189F /* SideMenuController.swift */; };
+		D39CFF261FC5F4CD00A2189F /* SJSwiftSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CFF241FC5F4CD00A2189F /* SJSwiftSideMenuController.swift */; };
 		D3D032321FC1F0320090A8F8 /* Raleway-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3D0321F1FC1F0320090A8F8 /* Raleway-Black.ttf */; };
 		D3D032331FC1F0320090A8F8 /* Raleway-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3D032201FC1F0320090A8F8 /* Raleway-BlackItalic.ttf */; };
 		D3D032341FC1F0320090A8F8 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3D032211FC1F0320090A8F8 /* Raleway-Bold.ttf */; };
@@ -211,6 +213,8 @@
 		D367CD971FC1D1F9001AFFF4 /* DashboradVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboradVC.swift; sourceTree = "<group>"; };
 		D367CD991FC1D208001AFFF4 /* AddtoCartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddtoCartVC.swift; sourceTree = "<group>"; };
 		D367CD9C1FC1D22D001AFFF4 /* CheckoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutVC.swift; sourceTree = "<group>"; };
+		D39CFF231FC5F4CD00A2189F /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
+		D39CFF241FC5F4CD00A2189F /* SJSwiftSideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJSwiftSideMenuController.swift; sourceTree = "<group>"; };
 		D3D0321F1FC1F0320090A8F8 /* Raleway-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Black.ttf"; sourceTree = "<group>"; };
 		D3D032201FC1F0320090A8F8 /* Raleway-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BlackItalic.ttf"; sourceTree = "<group>"; };
 		D3D032211FC1F0320090A8F8 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		D367CC6A1FC15224001AFFF4 /* SuperGems */ = {
 			isa = PBXGroup;
 			children = (
+				D39CFF221FC5F4CD00A2189F /* Sidebar */,
 				D3D0321E1FC1F0320090A8F8 /* fonts */,
 				D367CD9B1FC1D216001AFFF4 /* Checkout */,
 				D367CD921FC1D04C001AFFF4 /* SwiftLoader */,
@@ -435,6 +440,15 @@
 			name = Checkout;
 			sourceTree = "<group>";
 		};
+		D39CFF221FC5F4CD00A2189F /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				D39CFF231FC5F4CD00A2189F /* SideMenuController.swift */,
+				D39CFF241FC5F4CD00A2189F /* SJSwiftSideMenuController.swift */,
+			);
+			path = Sidebar;
+			sourceTree = "<group>";
+		};
 		D3D0321E1FC1F0320090A8F8 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +588,7 @@
 				D367CD501FC1CDDE001AFFF4 /* ButtonBarView.swift in Sources */,
 				D367CD9A1FC1D208001AFFF4 /* AddtoCartVC.swift in Sources */,
 				D367CD251FC1544B001AFFF4 /* Alamofire.swift in Sources */,
+				D39CFF251FC5F4CD00A2189F /* SideMenuController.swift in Sources */,
 				D367CC6E1FC15224001AFFF4 /* ViewController.swift in Sources */,
 				D367CD4F1FC1CDDE001AFFF4 /* BarView.swift in Sources */,
 				D367CD341FC1544B001AFFF4 /* Timeline.swift in Sources */,
@@ -609,6 +624,7 @@
 				D367CD2E1FC1544B001AFFF4 /* ResponseSerialization.swift in Sources */,
 				D367CD511FC1CDDE001AFFF4 /* ButtonBarViewCell.swift in Sources */,
 				D367CD861FC1CE5B001AFFF4 /* SDWebImageDownloader.m in Sources */,
+				D39CFF261FC5F4CD00A2189F /* SJSwiftSideMenuController.swift in Sources */,
 				D367CD8D1FC1CE5B001AFFF4 /* UIImage+WebP.m in Sources */,
 				D367CD2B1FC1544B001AFFF4 /* ParameterEncoding.swift in Sources */,
 				D367CD281FC1544B001AFFF4 /* MultipartFormData.swift in Sources */,

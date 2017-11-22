@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var deviceUUID = String()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
@@ -20,8 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
-        let deviceUUID: String = (UIDevice.current.identifierForVendor?.uuidString)!
+        deviceUUID = (UIDevice.current.identifierForVendor?.uuidString)!
 
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let sideVC_L : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
+        let sideVC_R : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
+        
+        let rootVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
+        SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideView, rightMenuType: .SlideView)
+        
         return true
     }
 
