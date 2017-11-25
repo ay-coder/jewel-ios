@@ -13,7 +13,7 @@ let MainScreen = UIScreen.main.bounds.size
 
 let appDelegate     = UIApplication.shared.delegate as! AppDelegate
 let userDefaults    = UserDefaults.standard
-let Application_Name  =  "Bonfire"
+let Application_Name  =  "Super Gems"
 let Alert_NoInternet    = "You are not connected to internet.\nPlease check your internet connection."
 let kPrivacyTermsVCViewID = "PrivacyTermsVC"
 let Alert_NoDataFound    = "No Data Found."
@@ -54,6 +54,7 @@ let kkeyisUserLogin = "UserLogin"
 let kkeyError = "error"
 let kkeyCampusCode = "CampusCode"
 let kkeyCampusID = "campusID"
+let kkeyMessage = "message"
 
 let kkeytext = "text"
 let kkeytime = "time"
@@ -65,59 +66,26 @@ let kYES = "YES"
 let kFBAPPID = "128398547683260"
 
 
-let kServerURL = "https://bonfireapp.xyz/api/"
+let kServerURL = "http://52.66.73.127/jewel/public/api/"
 
-let kSignUP = "signup"
+let kWhatsNewAPI = "products"
+let kcategories = "categories"
+let kAddtoCart = "products/add-to-cart"
+
+let kkeyproductTitle = "productTitle"
+let kkeyproductImage = "productImage"
+let kkeyproductPrice = "productPrice"
+let kkeyproductDescription = "productDescription"
+let kkeyproductId = "productId"
+
+
+let kSignUP = "register"
 let kLogin = "login"
-let kUserprofile = "user-profile-with-interest/"
-let kCampus = "campus"
-let kCreateGroup = "groups/create"
-let kEditGroup = "groups/edit"
-
-let kInterest  = "interests"
-let kGetUserInterest = "user-interests"
-let kEvents  = "events"
-let kAddInterest = "user-interest/add-interest"
-let kGetAllChannel = "get-channels"
-let kGetChannelByGroupID = "channels/get-channels-by-group-id"
-let kManagePermission = "groups/manage-permission"
-
-let kGetAppGroup = "groups"
-let kGetForYouFeed = "get-for-you-groups"
-let kRandomGroups = "groups/random-groups"
-
-let kCreateNewChannel = "create-new-channel"
-let kCreateNewFeed = "create-new-feed"
-let kAddGrpMember = "add-member"
-let kGetAllChannelFeed = "get-all-channel-feeds"
-let kGetMessagesFeed = "get-home-feeds"
-let kGetGrpEvents = "get-group-events"
-let kGetAllCampusUser = "campus-users"
-let kRemoveGroup = "groups/exit"
-let kUserInterestUpdate = "user-interest/add-bulk-interest"
-let kLeadersofGroup = "groups/get-member-suggestions"
-let kAddMemberAPI = "groups/add-member"
-let kAddEvent = "events/create"
-let kDeleteEvent = "events/delete"
-let kkeySetDeviceToken = "set-user-token"
-let kDeleteChannel = "channels/delete-channel"
 
 let kEditProfileAPI = "user-profile/update-profile"
 
-let kReportFeed = "feeds/report"
-let kReportUser = "users/report-user"
-
 let kPrivacy = "privacy-policy"
 let kTermsConditions = "terms-conditions"
-
-let kAPIAllowAccess = "groups/allow-access"
-let kAPIRemoveAccess = "groups/remove-access"
-
-
-//var CurrentUser : UserModel = UserModel()
-
-let kIdentifire_AddInterestToMsgView = "AddInterestToMsgView"
-let kIdentifire_GroupTitleVC = "GroupTitleVC"
 
 var progressView : UIView?
 

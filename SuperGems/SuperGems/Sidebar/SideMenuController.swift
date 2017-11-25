@@ -11,15 +11,18 @@ import UIKit
 class SideMenuController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var menuTableView : UITableView!
-   
+    @IBOutlet weak var menuTableHeightCT : NSLayoutConstraint!
+
     var menuItems : NSArray = NSArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.menuTableView.estimatedRowHeight = 200.0
+        self.menuTableView.estimatedRowHeight = 44.0
         self.menuTableView.rowHeight = UITableViewAutomaticDimension
         // Do any additional setup after loading the view.
+        
+        menuTableHeightCT.constant = 88.0
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +37,7 @@ class SideMenuController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 9
+        return 2
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {

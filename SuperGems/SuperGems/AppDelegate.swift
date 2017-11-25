@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var deviceUUID = String()
+    var arrLoginData = NSDictionary()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
     {
@@ -23,11 +24,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         deviceUUID = (UIDevice.current.identifierForVendor?.uuidString)!
 
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let sideVC_L : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
-        let sideVC_R : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
         
-        let rootVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
-        SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideView, rightMenuType: .SlideView)
+        if (userDefaults.bool(forKey: kkeyisUserLogin))
+        {
+            let sideVC_L : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
+            let sideVC_R : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
+            
+            let rootVC = storyBoard.instantiateViewController(withIdentifier: "DashboradVC") as UIViewController
+            SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideView, rightMenuType: .SlideView)
+        }
+        else
+        {
+            let sideVC_L : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
+            let sideVC_R : SideMenuController = (storyBoard.instantiateViewController(withIdentifier: "SideMenuController") as? SideMenuController)!
+            
+            let rootVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
+            SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideView, rightMenuType: .SlideView)
+        }
         
         UIApplication.shared.statusBarStyle = .lightContent
         
