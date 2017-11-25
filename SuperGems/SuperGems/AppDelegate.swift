@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
         SJSwiftSideMenuController.setUpNavigation(rootController: rootVC, leftMenuController: sideVC_L, rightMenuController: sideVC_R, leftMenuType: .SlideView, rightMenuType: .SlideView)
         
+        UIApplication.shared.statusBarStyle = .lightContent
+        
         return true
     }
 

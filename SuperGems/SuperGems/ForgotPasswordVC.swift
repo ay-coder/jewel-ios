@@ -10,6 +10,8 @@ import UIKit
 
 class ForgotPasswordVC: UIViewController
 {
+    @IBOutlet weak var txtEmail : UITextField!
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -22,6 +24,15 @@ class ForgotPasswordVC: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func btnSIGNINAction(_ sender: Any)
+    {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func btnforgotPWDAction(_ sender: Any)
+    {
+    }
+
     /*
     // MARK: - Navigation
 

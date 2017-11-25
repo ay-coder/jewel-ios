@@ -79,7 +79,9 @@ class ViewController: UIViewController
     }
     @IBAction func btnSIGNINAction(_ sender: Any)
     {
-        
+        let storyTab = UIStoryboard(name: "Main", bundle: nil)
+        let objForgotPasswordVC = storyTab.instantiateViewController(withIdentifier: "DashboradVC")
+        self.navigationController?.pushViewController(objForgotPasswordVC, animated: true)
     }
     
     @IBAction func btnLoginasGuestAction(_ sender: Any)
