@@ -201,7 +201,13 @@ class DashboradVC: UIViewController
         iSelectedTab = sender.tag
         self.SetButtonSelected(iTag: iSelectedTab)
     }
-    
+    @IBAction func btnViewCartClicked(_ sender: UIButton)
+    {
+        let storyTab = UIStoryboard(name: "Main", bundle: nil)
+        let objProductDetailVC = storyTab.instantiateViewController(withIdentifier: "ViewCartVC") as! ViewCartVC
+        self.navigationController?.pushViewController(objProductDetailVC, animated: true)
+    }
+
     //MARK:- Button Click Action
     @IBAction func btnMenuClicked(sender: UIButton)
     {

@@ -769,6 +769,9 @@
                                             <constraint firstAttribute="height" constant="44" id="ttK-TK-p6O"/>
                                         </constraints>
                                         <state key="normal" image="cart_icon"/>
+                                        <connections>
+                                            <action selector="btnViewCartClicked:" destination="mHk-gm-o1M" eventType="touchUpInside" id="C5v-eO-6EM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1221,6 +1224,9 @@
                                             <constraint firstAttribute="height" constant="44" id="tB4-8O-Uoa"/>
                                         </constraints>
                                         <state key="normal" image="cart_icon"/>
+                                        <connections>
+                                            <action selector="btnViewCartClicked:" destination="BCP-t0-OWy" eventType="touchUpInside" id="p7m-wP-EbU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.16079381108283997" green="0.14514079689979553" blue="0.12549987435340881" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1372,11 +1378,11 @@
                                         </constraints>
                                         <state key="normal" image="back_icon"/>
                                         <connections>
-                                            <action selector="btnBackAction:" destination="Fme-qn-Nts" eventType="touchUpInside" id="c12-Co-SrT"/>
+                                            <action selector="btnBackAction:" destination="Fme-qn-Nts" eventType="touchUpInside" id="MzB-VX-cQw"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BAG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q2-RK-QBB">
-                                        <rect key="frame" x="143" y="12.5" width="34.5" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR BASKET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Q2-RK-QBB">
+                                        <rect key="frame" x="102.5" y="12.5" width="116.5" height="20"/>
                                         <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
                                         <color key="textColor" red="0.82757467029999998" green="0.6553996205" blue="0.27942919729999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1404,8 +1410,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TOTAL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tz2-TE-fEr">
-                                        <rect key="frame" x="256" y="8" width="50" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tz2-TE-fEr">
+                                        <rect key="frame" x="306" y="8" width="0.0" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="XhW-w3-Ung"/>
                                         </constraints>
@@ -1446,8 +1452,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="145" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s8n-qb-sP4">
                                 <rect key="frame" x="0.0" y="149" width="320" height="331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="331" id="bz6-Od-eCN"/>
+                                </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="143" id="ky8-xG-zNq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="viewCartCell" rowHeight="143" id="ky8-xG-zNq" customClass="viewCartCell" customModule="SuperGems" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ky8-xG-zNq" id="6ZV-yZ-pdw">
@@ -1556,8 +1565,20 @@
                                                 <constraint firstItem="v1h-Wa-PT5" firstAttribute="top" secondItem="42k-qa-nW9" secondAttribute="bottom" constant="8" id="xgX-if-tvK"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="btnRemove" destination="vBO-KH-fPA" id="8h9-9U-95C"/>
+                                            <outlet property="imgProduct" destination="9rv-ie-nal" id="P3V-f9-7Bt"/>
+                                            <outlet property="lblPrice" destination="AkL-XF-QMo" id="zhF-gc-LHC"/>
+                                            <outlet property="lblProductDescription" destination="v1h-Wa-PT5" id="SDT-3i-Obf"/>
+                                            <outlet property="lblProductName" destination="42k-qa-nW9" id="7L7-g0-fIu"/>
+                                            <outlet property="lblQty" destination="UQ4-pu-gab" id="w2U-lb-P84"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Fme-qn-Nts" id="Mgs-3X-znv"/>
+                                    <outlet property="delegate" destination="Fme-qn-Nts" id="Dq5-CC-9vX"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1578,6 +1599,12 @@
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="lblCartTotal" destination="tz2-TE-fEr" id="8ys-dT-oY7"/>
+                        <outlet property="lblScreenTitle" destination="8Q2-RK-QBB" id="lka-ts-9hv"/>
+                        <outlet property="tblCart" destination="s8n-qb-sP4" id="OIg-xT-SAv"/>
+                        <outlet property="tblCartHeightCT" destination="bz6-Od-eCN" id="Leu-4i-gVc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMS-gT-v1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

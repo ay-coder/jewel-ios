@@ -49,11 +49,18 @@ class ProductDetailVC: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: Button Action
     @IBAction func btnBackAction(_ sender: Any)
     {
         _ = self.navigationController?.popViewController(animated: true)
     }
-
+    @IBAction func btnViewCartClicked(_ sender: UIButton)
+    {
+        let storyTab = UIStoryboard(name: "Main", bundle: nil)
+        let objProductDetailVC = storyTab.instantiateViewController(withIdentifier: "ViewCartVC") as! ViewCartVC
+        self.navigationController?.pushViewController(objProductDetailVC, animated: true)
+    }
+    
     @IBAction func btnAddtoCartAction(_ sender: Any)
     {
         let dic = UserDefaults.standard.value(forKey: kkeyLoginData)

@@ -71,13 +71,15 @@ let kServerURL = "http://52.66.73.127/jewel/public/api/"
 let kWhatsNewAPI = "products"
 let kcategories = "categories"
 let kAddtoCart = "products/add-to-cart"
+let kGetCartDetails = "products/get-cart"
+let kRemoveProductfromCart = "products/remove-product-from-cart"
 
 let kkeyproductTitle = "productTitle"
 let kkeyproductImage = "productImage"
 let kkeyproductPrice = "productPrice"
 let kkeyproductDescription = "productDescription"
 let kkeyproductId = "productId"
-
+let kkeycartQty = "cartQty"
 
 let kSignUP = "register"
 let kLogin = "login"
