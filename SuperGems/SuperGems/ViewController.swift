@@ -23,6 +23,7 @@ class ViewController: UIViewController
     @IBOutlet weak var txtSigunpUserName : UITextField!
     @IBOutlet weak var txtSigunpPassword : UITextField!
     @IBOutlet weak var txtSigunpConfirmPassword : UITextField!
+    @IBOutlet weak var txtSigunpName : UITextField!
 
     override func viewDidLoad()
     {
@@ -177,7 +178,11 @@ class ViewController: UIViewController
     //MARK: Signup Action
     @IBAction func btnSIGNUPAction(_ sender: Any)
     {
-        if (self.txtSigunpUserName.text?.isEmpty)!
+        if (self.txtSigunpName.text?.isEmpty)!
+        {
+            App_showAlert(withMessage: "Please enter name", inView: self)
+        }
+       else if (self.txtSigunpUserName.text?.isEmpty)!
         {
             App_showAlert(withMessage: "Please enter email address", inView: self)
         }
@@ -202,7 +207,7 @@ class ViewController: UIViewController
     func callSignUPAPI()
     {
         let url = kServerURL + kSignUP
-        let parameters: [String: Any] = ["email": self.txtSigunpUserName.text!, "password": self.txtSigunpPassword.text!, "username":"","name":""]
+        let parameters: [String: Any] = ["email": self.txtSigunpUserName.text!, "password": self.txtSigunpPassword.text!, "username":self.txtSigunpUserName.text!,"name":self.txtSigunpName.text!]
         
         showProgress(inView: self.view)
         print("parameters:>\(parameters)")
@@ -233,7 +238,7 @@ class ViewController: UIViewController
                             {
                                 if let errorcode = dictemp.value(forKey: "code")
                                 {
-                                    if errorcode as! String == "200"
+                                    if errorcode as! NSNumber == 200
                                     {
                                         let data = NSKeyedArchiver.archivedData(withRootObject: dictemp)
                                         UserDefaults.standard.set(data, forKey: kkeyLoginData)

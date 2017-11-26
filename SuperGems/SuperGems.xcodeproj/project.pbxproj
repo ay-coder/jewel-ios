@@ -87,6 +87,16 @@
 		D367CD981FC1D1F9001AFFF4 /* DashboradVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D367CD971FC1D1F9001AFFF4 /* DashboradVC.swift */; };
 		D367CD9A1FC1D208001AFFF4 /* AddtoCartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D367CD991FC1D208001AFFF4 /* AddtoCartVC.swift */; };
 		D367CD9D1FC1D22D001AFFF4 /* CheckoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D367CD9C1FC1D22D001AFFF4 /* CheckoutVC.swift */; };
+		D370910D1FCA94860000116C /* AbstractActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D37090FA1FCA94860000116C /* AbstractActionSheetPicker.m */; };
+		D370910E1FCA94860000116C /* ActionSheetCustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D37090FC1FCA94860000116C /* ActionSheetCustomPicker.m */; };
+		D370910F1FCA94860000116C /* ActionSheetDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D37090FF1FCA94860000116C /* ActionSheetDatePicker.m */; };
+		D37091101FCA94860000116C /* ActionSheetDistancePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D37091011FCA94860000116C /* ActionSheetDistancePicker.m */; };
+		D37091111FCA94860000116C /* ActionSheetLocalePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D37091031FCA94860000116C /* ActionSheetLocalePicker.m */; };
+		D37091121FCA94860000116C /* ActionSheetMultipleStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D37091051FCA94860000116C /* ActionSheetMultipleStringPicker.m */; };
+		D37091131FCA94860000116C /* ActionSheetStringPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D37091081FCA94860000116C /* ActionSheetStringPicker.m */; };
+		D37091141FCA94860000116C /* DistancePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D370910A1FCA94860000116C /* DistancePickerView.m */; };
+		D37091151FCA94860000116C /* SWActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = D370910C1FCA94860000116C /* SWActionSheet.m */; };
+		D37091181FCA95150000116C /* CategoryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37091171FCA95150000116C /* CategoryDetailVC.swift */; };
 		D39CFF251FC5F4CD00A2189F /* SideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CFF231FC5F4CD00A2189F /* SideMenuController.swift */; };
 		D39CFF261FC5F4CD00A2189F /* SJSwiftSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CFF241FC5F4CD00A2189F /* SJSwiftSideMenuController.swift */; };
 		D3A8277A1FC9244500F7E7FF /* FeaturedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A827791FC9244500F7E7FF /* FeaturedVC.swift */; };
@@ -218,6 +228,27 @@
 		D367CD971FC1D1F9001AFFF4 /* DashboradVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboradVC.swift; sourceTree = "<group>"; };
 		D367CD991FC1D208001AFFF4 /* AddtoCartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddtoCartVC.swift; sourceTree = "<group>"; };
 		D367CD9C1FC1D22D001AFFF4 /* CheckoutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutVC.swift; sourceTree = "<group>"; };
+		D37090F91FCA94860000116C /* AbstractActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractActionSheetPicker.h; sourceTree = "<group>"; };
+		D37090FA1FCA94860000116C /* AbstractActionSheetPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractActionSheetPicker.m; sourceTree = "<group>"; };
+		D37090FB1FCA94860000116C /* ActionSheetCustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetCustomPicker.h; sourceTree = "<group>"; };
+		D37090FC1FCA94860000116C /* ActionSheetCustomPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetCustomPicker.m; sourceTree = "<group>"; };
+		D37090FD1FCA94860000116C /* ActionSheetCustomPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetCustomPickerDelegate.h; sourceTree = "<group>"; };
+		D37090FE1FCA94860000116C /* ActionSheetDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetDatePicker.h; sourceTree = "<group>"; };
+		D37090FF1FCA94860000116C /* ActionSheetDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetDatePicker.m; sourceTree = "<group>"; };
+		D37091001FCA94860000116C /* ActionSheetDistancePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetDistancePicker.h; sourceTree = "<group>"; };
+		D37091011FCA94860000116C /* ActionSheetDistancePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetDistancePicker.m; sourceTree = "<group>"; };
+		D37091021FCA94860000116C /* ActionSheetLocalePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetLocalePicker.h; sourceTree = "<group>"; };
+		D37091031FCA94860000116C /* ActionSheetLocalePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetLocalePicker.m; sourceTree = "<group>"; };
+		D37091041FCA94860000116C /* ActionSheetMultipleStringPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetMultipleStringPicker.h; sourceTree = "<group>"; };
+		D37091051FCA94860000116C /* ActionSheetMultipleStringPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetMultipleStringPicker.m; sourceTree = "<group>"; };
+		D37091061FCA94860000116C /* ActionSheetPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetPicker.h; sourceTree = "<group>"; };
+		D37091071FCA94860000116C /* ActionSheetStringPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSheetStringPicker.h; sourceTree = "<group>"; };
+		D37091081FCA94860000116C /* ActionSheetStringPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionSheetStringPicker.m; sourceTree = "<group>"; };
+		D37091091FCA94860000116C /* DistancePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistancePickerView.h; sourceTree = "<group>"; };
+		D370910A1FCA94860000116C /* DistancePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistancePickerView.m; sourceTree = "<group>"; };
+		D370910B1FCA94860000116C /* SWActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWActionSheet.h; sourceTree = "<group>"; };
+		D370910C1FCA94860000116C /* SWActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWActionSheet.m; sourceTree = "<group>"; };
+		D37091171FCA95150000116C /* CategoryDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailVC.swift; sourceTree = "<group>"; };
 		D39CFF231FC5F4CD00A2189F /* SideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuController.swift; sourceTree = "<group>"; };
 		D39CFF241FC5F4CD00A2189F /* SJSwiftSideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SJSwiftSideMenuController.swift; sourceTree = "<group>"; };
 		D3A827791FC9244500F7E7FF /* FeaturedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedVC.swift; sourceTree = "<group>"; };
@@ -281,6 +312,8 @@
 		D367CC6A1FC15224001AFFF4 /* SuperGems */ = {
 			isa = PBXGroup;
 			children = (
+				D37091161FCA94FF0000116C /* CategoryDetails */,
+				D37090F81FCA94860000116C /* Pickers */,
 				D361E7101FC9959F006F25CC /* ProductDetail */,
 				D3A827781FC9242400F7E7FF /* Featured */,
 				D39CFF221FC5F4CD00A2189F /* Sidebar */,
@@ -457,6 +490,41 @@
 			name = Checkout;
 			sourceTree = "<group>";
 		};
+		D37090F81FCA94860000116C /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				D37090F91FCA94860000116C /* AbstractActionSheetPicker.h */,
+				D37090FA1FCA94860000116C /* AbstractActionSheetPicker.m */,
+				D37090FB1FCA94860000116C /* ActionSheetCustomPicker.h */,
+				D37090FC1FCA94860000116C /* ActionSheetCustomPicker.m */,
+				D37090FD1FCA94860000116C /* ActionSheetCustomPickerDelegate.h */,
+				D37090FE1FCA94860000116C /* ActionSheetDatePicker.h */,
+				D37090FF1FCA94860000116C /* ActionSheetDatePicker.m */,
+				D37091001FCA94860000116C /* ActionSheetDistancePicker.h */,
+				D37091011FCA94860000116C /* ActionSheetDistancePicker.m */,
+				D37091021FCA94860000116C /* ActionSheetLocalePicker.h */,
+				D37091031FCA94860000116C /* ActionSheetLocalePicker.m */,
+				D37091041FCA94860000116C /* ActionSheetMultipleStringPicker.h */,
+				D37091051FCA94860000116C /* ActionSheetMultipleStringPicker.m */,
+				D37091061FCA94860000116C /* ActionSheetPicker.h */,
+				D37091071FCA94860000116C /* ActionSheetStringPicker.h */,
+				D37091081FCA94860000116C /* ActionSheetStringPicker.m */,
+				D37091091FCA94860000116C /* DistancePickerView.h */,
+				D370910A1FCA94860000116C /* DistancePickerView.m */,
+				D370910B1FCA94860000116C /* SWActionSheet.h */,
+				D370910C1FCA94860000116C /* SWActionSheet.m */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		D37091161FCA94FF0000116C /* CategoryDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D37091171FCA95150000116C /* CategoryDetailVC.swift */,
+			);
+			name = CategoryDetails;
+			sourceTree = "<group>";
+		};
 		D39CFF221FC5F4CD00A2189F /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -596,6 +664,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D367CD2A1FC1544B001AFFF4 /* Notifications.swift in Sources */,
+				D37091141FCA94860000116C /* DistancePickerView.m in Sources */,
 				D367CD2C1FC1544B001AFFF4 /* Request.swift in Sources */,
 				D367CD8E1FC1CE5B001AFFF4 /* UIImageView+HighlightedWebCache.m in Sources */,
 				D367CCE51FC1538D001AFFF4 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
@@ -610,12 +679,14 @@
 				D367CCE11FC1538D001AFFF4 /* IQBarButtonItem.swift in Sources */,
 				D367CCD91FC1537E001AFFF4 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				D367CD481FC1CD1A001AFFF4 /* PagerTabStripViewController.swift in Sources */,
+				D37091111FCA94860000116C /* ActionSheetLocalePicker.m in Sources */,
 				D367CD501FC1CDDE001AFFF4 /* ButtonBarView.swift in Sources */,
 				D367CD9A1FC1D208001AFFF4 /* AddtoCartVC.swift in Sources */,
 				D367CD251FC1544B001AFFF4 /* Alamofire.swift in Sources */,
 				D39CFF251FC5F4CD00A2189F /* SideMenuController.swift in Sources */,
 				D367CC6E1FC15224001AFFF4 /* ViewController.swift in Sources */,
 				D367CD4F1FC1CDDE001AFFF4 /* BarView.swift in Sources */,
+				D370910F1FCA94860000116C /* ActionSheetDatePicker.m in Sources */,
 				D367CD341FC1544B001AFFF4 /* Timeline.swift in Sources */,
 				D367CD461FC1CD1A001AFFF4 /* PagerTabStripBehaviour.swift in Sources */,
 				D367CD471FC1CD1A001AFFF4 /* PagerTabStripError.swift in Sources */,
@@ -628,10 +699,12 @@
 				D367CD8C1FC1CE5B001AFFF4 /* UIImage+MultiFormat.m in Sources */,
 				D367CD891FC1CE5B001AFFF4 /* SDWebImagePrefetcher.m in Sources */,
 				D367CD8F1FC1CE5B001AFFF4 /* UIImageView+WebCache.m in Sources */,
+				D37091121FCA94860000116C /* ActionSheetMultipleStringPicker.m in Sources */,
 				D367CD961FC1D1A6001AFFF4 /* ForgotPasswordVC.swift in Sources */,
 				D367CD801FC1CE5B001AFFF4 /* NSData+ImageContentType.m in Sources */,
 				D367CD351FC1544B001AFFF4 /* Validation.swift in Sources */,
 				D367CD821FC1CE5B001AFFF4 /* SDImageCache.m in Sources */,
+				D370910E1FCA94860000116C /* ActionSheetCustomPicker.m in Sources */,
 				D367CCD41FC15377001AFFF4 /* IQKeyboardManagerConstantsInternal.swift in Sources */,
 				D367CD361FC1544B001AFFF4 /* SwiftyJSON.swift in Sources */,
 				D367CD851FC1CE5B001AFFF4 /* SDWebImageDecoder.m in Sources */,
@@ -645,12 +718,14 @@
 				D367CD241FC1544B001AFFF4 /* AFError.swift in Sources */,
 				D367CD911FC1CE5B001AFFF4 /* UIView+WebCacheOperation.m in Sources */,
 				D367CD441FC1CD1A001AFFF4 /* ButtonBarPagerTabStripViewController.swift in Sources */,
+				D37091151FCA94860000116C /* SWActionSheet.m in Sources */,
 				D367CD331FC1544B001AFFF4 /* TaskDelegate.swift in Sources */,
 				D367CD901FC1CE5B001AFFF4 /* UIView+WebCache.m in Sources */,
 				D367CD261FC1544B001AFFF4 /* DispatchQueue+Alamofire.swift in Sources */,
 				D367CD2E1FC1544B001AFFF4 /* ResponseSerialization.swift in Sources */,
 				D367CD511FC1CDDE001AFFF4 /* ButtonBarViewCell.swift in Sources */,
 				D367CD861FC1CE5B001AFFF4 /* SDWebImageDownloader.m in Sources */,
+				D37091131FCA94860000116C /* ActionSheetStringPicker.m in Sources */,
 				D39CFF261FC5F4CD00A2189F /* SJSwiftSideMenuController.swift in Sources */,
 				D367CD8D1FC1CE5B001AFFF4 /* UIImage+WebP.m in Sources */,
 				D361E7121FC995B8006F25CC /* ProductDetailVC.swift in Sources */,
@@ -658,17 +733,20 @@
 				D367CD281FC1544B001AFFF4 /* MultipartFormData.swift in Sources */,
 				D367CD7E1FC1CE5B001AFFF4 /* Constant.swift in Sources */,
 				D367CCCE1FC15371001AFFF4 /* IQUIView+Hierarchy.swift in Sources */,
+				D370910D1FCA94860000116C /* AbstractActionSheetPicker.m in Sources */,
 				D367CCE21FC1538D001AFFF4 /* IQPreviousNextView.swift in Sources */,
 				D367CD2F1FC1544B001AFFF4 /* Result.swift in Sources */,
 				D367CD981FC1D1F9001AFFF4 /* DashboradVC.swift in Sources */,
 				D367CD451FC1CD1A001AFFF4 /* IndicatorInfo.swift in Sources */,
 				D367CD8B1FC1CE5B001AFFF4 /* UIImage+GIF.m in Sources */,
 				D367CCDB1FC15385001AFFF4 /* IQTextView.swift in Sources */,
+				D37091101FCA94860000116C /* ActionSheetDistancePicker.m in Sources */,
 				D367CD311FC1544B001AFFF4 /* SessionDelegate.swift in Sources */,
 				D367CD7D1FC1CE5B001AFFF4 /* AppUtils.swift in Sources */,
 				D367CD9D1FC1D22D001AFFF4 /* CheckoutVC.swift in Sources */,
 				D367CD291FC1544B001AFFF4 /* NetworkReachabilityManager.swift in Sources */,
 				D367CD491FC1CD1A001AFFF4 /* SwipeDirection.swift in Sources */,
+				D37091181FCA95150000116C /* CategoryDetailVC.swift in Sources */,
 				D367CD301FC1544B001AFFF4 /* ServerTrustPolicy.swift in Sources */,
 				D367CCCB1FC15371001AFFF4 /* IQNSArray+Sort.swift in Sources */,
 				D367CCD01FC15371001AFFF4 /* IQUIWindow+Hierarchy.swift in Sources */,

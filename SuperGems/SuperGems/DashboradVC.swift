@@ -22,12 +22,20 @@ class DashboradVC: UIViewController
     
     var arrWhatsNewData = NSMutableArray()
     var arrCategoryData = NSMutableArray()
+    var dictFeaturedData = NSMutableDictionary()
 
     @IBOutlet weak var clWhatsNew : UICollectionView!
     
-    @IBOutlet weak var vwFeatured : UIImageView!
-    @IBOutlet weak var vwWhatsNew : UIImageView!
-    @IBOutlet weak var vwCategories : UIImageView!
+    @IBOutlet weak var vwFeatured : UIView!
+    @IBOutlet weak var vwWhatsNew : UIView!
+    @IBOutlet weak var vwCategories : UIView!
+    
+    //FeaturedView Configuration
+    @IBOutlet weak var imgNewFeatured : UIImageView!
+    @IBOutlet weak var lblNewFeaturedTitle : UILabel!
+    @IBOutlet weak var lblNewFeaturedSubTitle : UILabel!
+    @IBOutlet weak var tblFeatured : UITableView!
+
     
     override func viewDidLoad()
     {
@@ -40,7 +48,8 @@ class DashboradVC: UIViewController
         SJSwiftSideMenuController.enableDimBackground = true
         SJSwiftSideMenuController.enableSwipeGestureWithMenuSide(menuSide: .LEFT)
 
-        self.getWhatsNewData()
+        self.tblFeatured.estimatedRowHeight = 143;
+        self.tblFeatured.rowHeight = UITableViewAutomaticDimension;
     }
 
     func SetButtonSelected(iTag: Int)
@@ -59,6 +68,12 @@ class DashboradVC: UIViewController
             imgFeatured.isHidden = false
             imgWhatsNew.isHidden = true
             imgCategories.isHidden = true
+            
+            vwFeatured.isHidden = false
+            vwWhatsNew.isHidden = true
+            vwCategories.isHidden = true
+            self.getFeaturedData()
+            
 
         }
         else if iTag == 2
@@ -74,6 +89,13 @@ class DashboradVC: UIViewController
             imgFeatured.isHidden = true
             imgWhatsNew.isHidden = false
             imgCategories.isHidden = true
+            
+            vwFeatured.isHidden = true
+            vwWhatsNew.isHidden = false
+            vwCategories.isHidden = true
+
+            self.getWhatsNewData()
+
         }
         else if iTag == 3
         {
@@ -88,6 +110,12 @@ class DashboradVC: UIViewController
             imgFeatured.isHidden = true
             imgWhatsNew.isHidden = true
             imgCategories.isHidden = false
+            
+            
+            vwFeatured.isHidden = true
+            vwWhatsNew.isHidden = true
+            vwCategories.isHidden = false
+            self.getCategoryData()
         }
     }
     
@@ -182,12 +210,80 @@ class DashboradVC: UIViewController
                         else
                         {
                             self.arrCategoryData = NSMutableArray(array: dictemp.value(forKey: "data") as! NSArray)
+                            
+                            if self.iSelectedTab == 1
+                            {
+                                self.tblFeatured.reloadData()
+                            }
                         }
                     }
                 }
                 break
             case .failure(_):
                 print(response.result.error!)
+                self.arrCategoryData = NSMutableArray()
+                App_showAlert(withMessage: response.result.error.debugDescription, inView: self)
+                break
+            }
+        }
+    }
+
+    //MARK: Get featured data
+    func getFeaturedData()
+    {
+        let dic = UserDefaults.standard.value(forKey: kkeyLoginData)
+        let final  = NSKeyedUnarchiver .unarchiveObject(with: dic as! Data) as! NSDictionary
+        
+        let url = kServerURL + kFeaturedData
+        showProgress(inView: self.view)
+        //        ShowProgresswithImage(inView: nil, image:UIImage(named: "icon_discoverloading"))
+        
+        let token = final .value(forKey: "userToken")
+        let headers = ["Authorization":"Bearer \(token!)"]
+        
+        request(url, method: .get, parameters:nil, headers: headers).responseJSON { (response:DataResponse<Any>) in
+            
+            print(response.result.debugDescription)
+            hideProgress()
+            
+            switch(response.result)
+            {
+            case .success(_):
+                if response.result.value != nil
+                {
+                    print(response.result.value!)
+                    
+                    if let json = response.result.value
+                    {
+                        let dictemp = json as! NSDictionary
+                        print("dictemp :> \(dictemp)")
+                        
+                        if (dictemp.value(forKey: "error") != nil)
+                        {
+                            let msg = ((dictemp.value(forKey: "error") as! NSDictionary) .value(forKey: "reason"))
+                            App_showAlert(withMessage: msg as! String, inView: self)
+                        }
+                        else
+                        {
+                            self.dictFeaturedData = NSMutableDictionary(dictionary: dictemp.value(forKey: "data") as! NSDictionary)
+                            
+                            let dic = self.dictFeaturedData["featured"] as! NSDictionary
+                            
+                            let strurl = dic["image"] as! String
+                            let url  = URL.init(string: strurl)
+                            self.imgNewFeatured.sd_setImage(with: url, placeholderImage: nil)
+                            
+                            self.lblNewFeaturedTitle.text = dic[kkeytitle] as? String
+                            self.lblNewFeaturedSubTitle.text = dic[kkeysubtitle] as? String
+
+                            self.getCategoryData()
+                        }
+                    }
+                }
+                break
+            case .failure(_):
+                print(response.result.error!)
+                self.dictFeaturedData = NSMutableDictionary()
                 App_showAlert(withMessage: response.result.error.debugDescription, inView: self)
                 break
             }
@@ -292,6 +388,41 @@ extension DashboradVC : UICollectionViewDelegate
         }
     }
 }
+extension DashboradVC: UITableViewDelegate,UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return self.arrCategoryData.count
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeaturedCell", for: indexPath) as! FeaturedCell
+        cell.selectionStyle = .none
+        let dic = self.arrCategoryData[indexPath.row] as! NSDictionary
+        
+        let strurl = dic[kkeycategoryImage] as! String
+        let url  = URL.init(string: strurl)
+        cell.imgCategory.sd_setImage(with: url, placeholderImage: nil)
+        
+        cell.lblCategoryName.text = dic[kkeycategoryTitle] as? String
+        cell.lblTotalProductCount.text = "\(dic[kkeyproductsCount] as! Int) items —"
+
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let storyTab = UIStoryboard(name: "Main", bundle: nil)
+        let objCategoryDetailVC = storyTab.instantiateViewController(withIdentifier: "CategoryDetailVC") as! CategoryDetailVC
+        objCategoryDetailVC.dicofSelectedCategory = self.arrCategoryData[indexPath.row] as! NSDictionary
+        self.navigationController?.pushViewController(objCategoryDetailVC, animated: true)
+    }
+}
+
 class WhatsNewCell: UICollectionViewCell
 {
     @IBOutlet weak var imgProduct: UIImageView!
@@ -299,4 +430,10 @@ class WhatsNewCell: UICollectionViewCell
     @IBOutlet weak var lblProductDescription: UILabel!
     @IBOutlet weak var lblPrice: UILabel!
 
+}
+class FeaturedCell: UITableViewCell
+{
+    @IBOutlet weak var imgCategory: UIImageView!
+    @IBOutlet weak var lblCategoryName: UILabel!
+    @IBOutlet weak var lblTotalProductCount: UILabel!
 }

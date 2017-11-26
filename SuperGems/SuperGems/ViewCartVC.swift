@@ -78,7 +78,7 @@ class ViewCartVC: UIViewController
                             {
                                 self.tblCartHeightCT.constant =  MainScreen.height - 149
                             }
-
+                            
                             self.tblCart.reloadData()
                         }
                     }
@@ -210,7 +210,7 @@ extension ViewCartVC: UITableViewDelegate,UITableViewDataSource
         
         cell.btnRemove.tag = indexPath.row
         cell.btnRemove.addTarget(self, action: #selector(self.btnRemoveAction(sender:)), for: .touchUpInside)
-
+        
         return cell
     }
     
