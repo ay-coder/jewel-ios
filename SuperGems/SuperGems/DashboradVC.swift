@@ -23,6 +23,7 @@ class DashboradVC: UIViewController
     var arrWhatsNewData = NSMutableArray()
     var arrCategoryData = NSMutableArray()
     var dictFeaturedData = NSMutableDictionary()
+    var arrproducts = NSMutableArray()
 
     @IBOutlet weak var clWhatsNew : UICollectionView!
     
@@ -36,7 +37,10 @@ class DashboradVC: UIViewController
     @IBOutlet weak var lblNewFeaturedSubTitle : UILabel!
     @IBOutlet weak var tblFeatured : UITableView!
 
-    
+    //Category View
+    @IBOutlet weak var clCategory : UICollectionView!
+    var arrCategorySectionSelection = NSMutableArray()
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -215,6 +219,15 @@ class DashboradVC: UIViewController
                             {
                                 self.tblFeatured.reloadData()
                             }
+                            else
+                            {
+                                self.arrCategorySectionSelection = NSMutableArray()
+                                for i in 0..<self.arrCategoryData.count
+                                {
+                                    self.arrCategorySectionSelection.add(kNO)
+                                }
+                                self.clCategory.reloadData()
+                            }
                         }
                     }
                 }
@@ -275,7 +288,7 @@ class DashboradVC: UIViewController
                             
                             self.lblNewFeaturedTitle.text = dic[kkeytitle] as? String
                             self.lblNewFeaturedSubTitle.text = dic[kkeysubtitle] as? String
-
+                            
                             self.getCategoryData()
                         }
                     }
@@ -310,7 +323,21 @@ class DashboradVC: UIViewController
         SJSwiftSideMenuController.showLeftMenu()
     }
 
-    
+    func btnRemoveAction(sender:UIButton)
+    {
+        let intRow = sender.tag
+        
+        if arrCategorySectionSelection[intRow] as! String == kNO
+        {
+            arrCategorySectionSelection.replaceObject(at: intRow, with: kYES)
+        }
+        else
+        {
+            arrCategorySectionSelection.replaceObject(at: intRow, with: kNO)
+        }
+        self.clCategory.reloadData()
+    }
+
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -329,26 +356,76 @@ class DashboradVC: UIViewController
     */
 
 }
-extension DashboradVC : UICollectionViewDataSource
+extension DashboradVC : UICollectionViewDataSource ,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        /*  if collectionView != self.clvwLeading
-         {
-         if UIScreen.main.bounds.size.height<=568
-         {
-         return CGSize(width: 140, height: 140)
-         }
-         return CGSize(width: 170, height: 220)
-         }*/
-        return CGSize(width: MainScreen.width/2, height: 500)
+        var  iHeightofDescription = CGFloat()
+        var  iHeightofTitle = CGFloat()
+        var  iHeightofPrice = CGFloat()
+        
+        if  collectionView == self.clCategory
+        {
+            
+            let dic = self.arrproducts[indexPath.row] as! NSDictionary
+            let fontAttributes = [NSFontAttributeName: UIFont (name: "Raleway-Regular", size: 17)]
+            var size = (dic[kkeyproductTitle] as! NSString).size(attributes: fontAttributes)
+            
+            iHeightofTitle = size.height
+            
+            if let temp = dic[kkeyproductDescription]
+            {
+                size = (dic[kkeyproductDescription] as! NSString).size(attributes: fontAttributes)
+                iHeightofDescription = size.height
+            }
+            
+            size = ("$\(dic[kkeyproductPrice] as! Int)".size(attributes: fontAttributes))
+            iHeightofPrice = size.height
+        }
+        else
+        {
+            let dic = self.arrWhatsNewData[indexPath.row] as! NSDictionary
+            let fontAttributes = [NSFontAttributeName: UIFont (name: "Raleway-Regular", size: 17)]
+            var size = (dic[kkeyproductTitle] as! NSString).size(attributes: fontAttributes)
+            
+            iHeightofTitle = size.height
+            
+            if let temp = dic[kkeyproductDescription]
+            {
+                size = (dic[kkeyproductDescription] as! NSString).size(attributes: fontAttributes)
+                iHeightofDescription = size.height
+            }
+            
+            size = ("$\(dic[kkeyproductPrice] as! Int)".size(attributes: fontAttributes))
+            iHeightofPrice = size.height
+        }
+
+        return CGSize(width: MainScreen.width/2, height: (200.0 + iHeightofTitle + iHeightofDescription + iHeightofPrice))
     }
 
+    func numberOfSections(in collectionView: UICollectionView) -> Int
+    {
+        if  collectionView == self.clCategory
+        {
+            return self.arrCategoryData.count
+        }
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         if  collectionView == self.clWhatsNew
         {
             return self.arrWhatsNewData.count
+        }
+        else
+        {
+            if arrCategorySectionSelection[section] as! String == kYES
+            {
+                let dictFeaturedData = NSMutableDictionary(dictionary: self.arrCategoryData[section]  as! NSDictionary)
+                self.arrproducts = NSMutableArray(array: dictFeaturedData["products"] as! NSArray)
+                return self.arrproducts.count
+            }
         }
         return 0
     }
@@ -369,14 +446,57 @@ extension DashboradVC : UICollectionViewDataSource
             cell.lblProductDescription.text = dic[kkeyproductDescription] as? String
             cell.lblPrice.text = "$\(dic[kkeyproductPrice] as! Int)"
         }
+        else
+        {
+            let dic = self.arrproducts[indexPath.row] as! NSDictionary
+            let strurl = dic[kkeyproductImage] as! String
+            let url  = URL.init(string: strurl)
+            cell.imgProduct.sd_setImage(with: url, placeholderImage: nil)
+            
+            cell.lblProductName.text = dic[kkeyproductTitle] as? String
+            cell.lblProductDescription.text = dic[kkeyproductDescription] as? String
+            cell.lblPrice.text = "$\(dic[kkeyproductPrice] as! Int)"
+
+        }
         return cell
     }
-}
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
+    {
+        switch kind
+        {
+            case UICollectionElementKindSectionHeader:
+                let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CategoryCollectionReusableView", for: indexPath) as! CategoryCollectionReusableView
+            
+                let dic = self.arrCategoryData[indexPath.row] as! NSDictionary
+            
+                let strurl = dic[kkeycategoryImage] as! String
+                let url  = URL.init(string: strurl)
+                reusableview.imgCategory.sd_setImage(with: url, placeholderImage: nil)
+            
+                reusableview.lblCategoryName.text = dic[kkeycategoryTitle] as? String
+                reusableview.lblTotalProductCount.text = "\(dic[kkeyproductsCount] as! Int) items —"
+                
+                reusableview.btnTapped.tag = indexPath.section
+                reusableview.btnTapped.addTarget(self, action: #selector(self.btnRemoveAction(sender:)), for: .touchUpInside)
 
-// MARK:- UICollectionViewDelegate Methods
+                return reusableview
+        default:  fatalError("Unexpected element kind")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize
+    {
+        if collectionView == self.clWhatsNew
+        {
+            return CGSize.zero
+        }
+        else
+        {
+            return CGSize(width: MainScreen.width, height: 108)
+        }
+    }
 
-extension DashboradVC : UICollectionViewDelegate
-{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         if  collectionView == self.clWhatsNew
@@ -385,6 +505,14 @@ extension DashboradVC : UICollectionViewDelegate
             let objProductDetailVC = storyTab.instantiateViewController(withIdentifier: "ProductDetailVC") as! ProductDetailVC
              objProductDetailVC.dicofProductDetail = self.arrWhatsNewData[indexPath.row] as! NSDictionary
             self.navigationController?.pushViewController(objProductDetailVC, animated: true)
+        }
+        else
+        {
+            let storyTab = UIStoryboard(name: "Main", bundle: nil)
+            let objProductDetailVC = storyTab.instantiateViewController(withIdentifier: "ProductDetailVC") as! ProductDetailVC
+            objProductDetailVC.dicofProductDetail = self.arrproducts[indexPath.row] as! NSDictionary
+            self.navigationController?.pushViewController(objProductDetailVC, animated: true)
+
         }
     }
 }
@@ -436,4 +564,12 @@ class FeaturedCell: UITableViewCell
     @IBOutlet weak var imgCategory: UIImageView!
     @IBOutlet weak var lblCategoryName: UILabel!
     @IBOutlet weak var lblTotalProductCount: UILabel!
+}
+class CategoryCollectionReusableView: UICollectionReusableView
+{
+    @IBOutlet weak var imgCategory: UIImageView!
+    @IBOutlet weak var lblCategoryName: UILabel!
+    @IBOutlet weak var lblTotalProductCount: UILabel!
+    @IBOutlet weak var btnTapped: UIButton!
+
 }

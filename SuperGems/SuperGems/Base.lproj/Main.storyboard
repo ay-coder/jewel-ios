@@ -972,7 +972,7 @@
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Eaa-5J-iO2">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="383"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5gv-rL-zJk">
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5gv-rL-zJk">
                                             <size key="itemSize" width="160" height="244"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -980,7 +980,7 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WhatsNewCell" id="mhg-bt-n8Q" customClass="WhatsNewCell" customModule="SuperGems" customModuleProvider="target">
-                                                <rect key="frame" x="80" y="0.0" width="160" height="244"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="160" height="244"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                     <rect key="frame" x="0.0" y="0.0" width="160" height="244"/>
@@ -1147,7 +1147,135 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dl-z3-w6m">
                                 <rect key="frame" x="0.0" y="97" width="320" height="383"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="znm-7I-cZx">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="383"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lrw-Fa-7Ni">
+                                            <size key="itemSize" width="160" height="243"/>
+                                            <size key="headerReferenceSize" width="320" height="141"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WhatsNewCell" id="Xc5-IZ-pe9" customClass="WhatsNewCell" customModule="SuperGems" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="141" width="160" height="243"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="243"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eT5-5b-eyx">
+                                                            <rect key="frame" x="8" y="0.0" width="144" height="160"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="160" id="25d-Fu-9mC"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDW-08-vAj">
+                                                            <rect key="frame" x="8" y="168" width="144" height="19"/>
+                                                            <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="16"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tef-7B-Ucf">
+                                                            <rect key="frame" x="8" y="195" width="144" height="16.5"/>
+                                                            <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rzN-Oh-uj0">
+                                                            <rect key="frame" x="8" y="219.5" width="144" height="15.5"/>
+                                                            <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="14"/>
+                                                            <color key="textColor" red="0.89425474410000005" green="0.7064242959" blue="0.29134109619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstItem="eT5-5b-eyx" firstAttribute="leading" secondItem="Xc5-IZ-pe9" secondAttribute="leading" constant="8" id="0ke-97-gK2"/>
+                                                    <constraint firstItem="rzN-Oh-uj0" firstAttribute="top" secondItem="Tef-7B-Ucf" secondAttribute="bottom" constant="8" id="19i-Yf-FrF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eT5-5b-eyx" secondAttribute="trailing" constant="8" id="CJ9-f0-5wa"/>
+                                                    <constraint firstItem="eT5-5b-eyx" firstAttribute="top" secondItem="Xc5-IZ-pe9" secondAttribute="top" id="FW2-gg-JLc"/>
+                                                    <constraint firstItem="Tef-7B-Ucf" firstAttribute="top" secondItem="QDW-08-vAj" secondAttribute="bottom" constant="8" id="FWS-8j-vmY"/>
+                                                    <constraint firstItem="QDW-08-vAj" firstAttribute="leading" secondItem="Xc5-IZ-pe9" secondAttribute="leading" constant="8" id="R7Q-6w-NwL"/>
+                                                    <constraint firstItem="QDW-08-vAj" firstAttribute="top" secondItem="eT5-5b-eyx" secondAttribute="bottom" constant="8" id="RkL-M4-RIX"/>
+                                                    <constraint firstItem="rzN-Oh-uj0" firstAttribute="leading" secondItem="Xc5-IZ-pe9" secondAttribute="leading" constant="8" id="XL2-NV-i0d"/>
+                                                    <constraint firstAttribute="bottom" secondItem="rzN-Oh-uj0" secondAttribute="bottom" constant="8" id="YzQ-Cu-ngO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="QDW-08-vAj" secondAttribute="trailing" constant="8" id="ZwB-nh-DZ0"/>
+                                                    <constraint firstItem="Tef-7B-Ucf" firstAttribute="leading" secondItem="Xc5-IZ-pe9" secondAttribute="leading" constant="8" id="jHf-wT-ZyQ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Tef-7B-Ucf" secondAttribute="trailing" constant="8" id="qV0-a5-HfR"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rzN-Oh-uj0" secondAttribute="trailing" constant="8" id="qbl-Pm-SYY"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imgProduct" destination="eT5-5b-eyx" id="W4q-8P-ZfP"/>
+                                                    <outlet property="lblPrice" destination="rzN-Oh-uj0" id="14b-XI-Ixv"/>
+                                                    <outlet property="lblProductDescription" destination="Tef-7B-Ucf" id="kOK-im-t8U"/>
+                                                    <outlet property="lblProductName" destination="QDW-08-vAj" id="wMJ-b1-GIC"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCollectionReusableView" id="jzE-ZP-ysV" customClass="CategoryCollectionReusableView" customModule="SuperGems" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qlS-kp-q8A">
+                                                    <rect key="frame" x="212" y="21" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="Oj3-sw-ILX"/>
+                                                        <constraint firstAttribute="width" constant="100" id="mMM-M1-9Tv"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3g-mq-vqb">
+                                                    <rect key="frame" x="8" y="61" width="196" height="20"/>
+                                                    <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
+                                                    <color key="textColor" red="0.89425474410000005" green="0.7064242959" blue="0.29134109619999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6jn-Kv-yEx">
+                                                    <rect key="frame" x="8" y="33" width="196" height="20"/>
+                                                    <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UxR-Qq-XbM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UxR-Qq-XbM" firstAttribute="top" secondItem="jzE-ZP-ysV" secondAttribute="top" id="5Vj-EC-xBW"/>
+                                                <constraint firstItem="qlS-kp-q8A" firstAttribute="leading" secondItem="6jn-Kv-yEx" secondAttribute="trailing" constant="8" id="FgA-hW-5yG"/>
+                                                <constraint firstItem="qlS-kp-q8A" firstAttribute="centerY" secondItem="jzE-ZP-ysV" secondAttribute="centerY" id="GkX-PO-zcz"/>
+                                                <constraint firstAttribute="trailing" secondItem="UxR-Qq-XbM" secondAttribute="trailing" id="JVF-co-3an"/>
+                                                <constraint firstItem="u3g-mq-vqb" firstAttribute="centerY" secondItem="jzE-ZP-ysV" secondAttribute="centerY" id="Jyg-uV-ZJX"/>
+                                                <constraint firstItem="6jn-Kv-yEx" firstAttribute="leading" secondItem="jzE-ZP-ysV" secondAttribute="leading" constant="8" id="KyT-B4-4MA"/>
+                                                <constraint firstItem="UxR-Qq-XbM" firstAttribute="leading" secondItem="jzE-ZP-ysV" secondAttribute="leading" id="Q1i-XB-iOp"/>
+                                                <constraint firstItem="u3g-mq-vqb" firstAttribute="leading" secondItem="jzE-ZP-ysV" secondAttribute="leading" constant="8" id="Qgr-hs-yky"/>
+                                                <constraint firstItem="qlS-kp-q8A" firstAttribute="leading" secondItem="u3g-mq-vqb" secondAttribute="trailing" constant="8" id="W7c-nH-Mlu"/>
+                                                <constraint firstAttribute="trailing" secondItem="qlS-kp-q8A" secondAttribute="trailing" constant="8" id="dh6-VH-Gic"/>
+                                                <constraint firstAttribute="bottom" secondItem="UxR-Qq-XbM" secondAttribute="bottom" id="e7V-NY-26V"/>
+                                                <constraint firstItem="u3g-mq-vqb" firstAttribute="top" secondItem="6jn-Kv-yEx" secondAttribute="bottom" constant="8" id="hPL-Fq-JjC"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="btnTapped" destination="UxR-Qq-XbM" id="BHy-Kp-ejw"/>
+                                                <outlet property="imgCategory" destination="qlS-kp-q8A" id="k0r-WJ-Z1V"/>
+                                                <outlet property="lblCategoryName" destination="6jn-Kv-yEx" id="bAP-mZ-BvC"/>
+                                                <outlet property="lblTotalProductCount" destination="u3g-mq-vqb" id="g4T-He-AUF"/>
+                                            </connections>
+                                        </collectionReusableView>
+                                        <connections>
+                                            <outlet property="dataSource" destination="mHk-gm-o1M" id="mBR-kN-4IP"/>
+                                            <outlet property="delegate" destination="mHk-gm-o1M" id="912-Ud-1Ez"/>
+                                        </connections>
+                                    </collectionView>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="znm-7I-cZx" firstAttribute="leading" secondItem="6dl-z3-w6m" secondAttribute="leading" id="4le-G7-Pse"/>
+                                    <constraint firstAttribute="bottom" secondItem="znm-7I-cZx" secondAttribute="bottom" id="Ifd-Wl-ICb"/>
+                                    <constraint firstItem="znm-7I-cZx" firstAttribute="top" secondItem="6dl-z3-w6m" secondAttribute="top" id="m10-Jy-LuA"/>
+                                    <constraint firstAttribute="trailing" secondItem="znm-7I-cZx" secondAttribute="trailing" id="ptS-b7-3Jj"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1181,6 +1309,7 @@
                         <outlet property="btnCategories" destination="yXN-CG-LpV" id="nr7-hf-9Y3"/>
                         <outlet property="btnFeatured" destination="zHj-IQ-BNN" id="07f-kR-vlj"/>
                         <outlet property="btnWhatsNew" destination="LId-4p-6gf" id="QyJ-yO-YQt"/>
+                        <outlet property="clCategory" destination="znm-7I-cZx" id="MZa-p4-L81"/>
                         <outlet property="clWhatsNew" destination="Eaa-5J-iO2" id="0JA-e2-Nh2"/>
                         <outlet property="imgCategories" destination="O5P-jh-oNb" id="qVI-6C-sJj"/>
                         <outlet property="imgFeatured" destination="CDo-0x-ZBW" id="CC0-FP-Mf7"/>
