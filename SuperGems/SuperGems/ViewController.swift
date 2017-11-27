@@ -101,7 +101,7 @@ class ViewController: UIViewController
     {
         
         let url = kServerURL + kLogin
-        let parameters: [String: Any] = ["email": self.txtUserName.text!, "password": self.txtPassword.text!]
+        let parameters: [String: Any] = ["email": self.txtUserName.text!, "password": self.txtPassword.text!,"token": appDelegate.deviceUUID]
         
         showProgress(inView: self.view)
         print("parameters:>\(parameters)")
@@ -172,7 +172,64 @@ class ViewController: UIViewController
 
     @IBAction func btnLoginasGuestAction(_ sender: Any)
     {
+        let url = kServerURL + kGuestLogin
+        let parameters: [String: Any] = ["token": appDelegate.deviceUUID]
         
+        showProgress(inView: self.view)
+        print("parameters:>\(parameters)")
+        request(url, method: .post, parameters:parameters).responseJSON { (response:DataResponse<Any>) in
+            
+            print(response.result.debugDescription)
+            
+            hideProgress()
+            switch(response.result)
+            {
+            case .success(_):
+                if response.result.value != nil
+                {
+                    print(response.result.value!)
+                    
+                    if let json = response.result.value
+                    {
+                        let dictemp = json as! NSDictionary
+                        print("dictemp :> \(dictemp)")
+                        
+                        if dictemp.count > 0
+                        {
+                            if let err = dictemp.value(forKey: kkeyError)
+                            {
+                                App_showAlert(withMessage: err as! String, inView: self)
+                            }
+                            else
+                            {
+                                appDelegate.arrLoginData = dictemp
+                                let data = NSKeyedArchiver.archivedData(withRootObject: appDelegate.arrLoginData)
+                                UserDefaults.standard.set(data, forKey: kkeyLoginData)
+                                
+                                UserDefaults.standard.set(true, forKey: kkeyisUserLogin)
+                                UserDefaults.standard.synchronize()
+                                
+                                let storyTab = UIStoryboard(name: "Main", bundle: nil)
+                                let objForgotPasswordVC = storyTab.instantiateViewController(withIdentifier: "DashboradVC")
+                                self.navigationController?.pushViewController(objForgotPasswordVC, animated: true)
+                            }
+                        }
+                        else
+                        {
+                            App_showAlert(withMessage: dictemp[kkeyError]! as! String, inView: self)
+                        }
+                    }
+                }
+                break
+                
+            case .failure(_):
+                print(response.result.error!)
+                App_showAlert(withMessage: response.result.error.debugDescription, inView: self)
+                break
+            }
+        }
+        
+
     }
     
     //MARK: Signup Action
@@ -207,7 +264,7 @@ class ViewController: UIViewController
     func callSignUPAPI()
     {
         let url = kServerURL + kSignUP
-        let parameters: [String: Any] = ["email": self.txtSigunpUserName.text!, "password": self.txtSigunpPassword.text!, "username":self.txtSigunpUserName.text!,"name":self.txtSigunpName.text!]
+        let parameters: [String: Any] = ["email": self.txtSigunpUserName.text!, "password": self.txtSigunpPassword.text!, "username":self.txtSigunpUserName.text!,"name":self.txtSigunpName.text!,"token": appDelegate.deviceUUID]
         
         showProgress(inView: self.view)
         print("parameters:>\(parameters)")

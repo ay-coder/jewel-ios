@@ -58,6 +58,7 @@ class ProductDetailVC: UIViewController
     {
         let storyTab = UIStoryboard(name: "Main", bundle: nil)
         let objProductDetailVC = storyTab.instantiateViewController(withIdentifier: "ViewCartVC") as! ViewCartVC
+        objProductDetailVC.bPresent = false
         self.navigationController?.pushViewController(objProductDetailVC, animated: true)
     }
     

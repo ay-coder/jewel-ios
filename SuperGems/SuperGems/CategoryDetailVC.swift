@@ -89,6 +89,7 @@ class CategoryDetailVC: UIViewController
     {
         let storyTab = UIStoryboard(name: "Main", bundle: nil)
         let objProductDetailVC = storyTab.instantiateViewController(withIdentifier: "ViewCartVC") as! ViewCartVC
+        objProductDetailVC.bPresent = false
         self.navigationController?.pushViewController(objProductDetailVC, animated: true)
     }
 
@@ -111,11 +112,30 @@ class CategoryDetailVC: UIViewController
     */
 
 }
-extension CategoryDetailVC : UICollectionViewDataSource
+extension CategoryDetailVC : UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize(width: MainScreen.width/2, height: 500)
+        var  iHeightofDescription = CGFloat()
+        var  iHeightofTitle = CGFloat()
+        var  iHeightofPrice = CGFloat()
+        
+        let dic = self.arrWhatsNewData[indexPath.row] as! NSDictionary
+        let fontAttributes = [NSFontAttributeName: UIFont (name: "Raleway-Regular", size: 17)]
+        var size = (dic[kkeyproductTitle] as! NSString).size(attributes: fontAttributes)
+        
+        iHeightofTitle = size.height
+        
+        if let temp = dic[kkeyproductDescription]
+        {
+            size = (dic[kkeyproductDescription] as! NSString).size(attributes: fontAttributes)
+            iHeightofDescription = size.height
+        }
+        
+        size = ("$\(dic[kkeyproductPrice] as! Int)".size(attributes: fontAttributes))
+        iHeightofPrice = size.height
+        
+        return CGSize(width: MainScreen.width/2, height: (200.0 + iHeightofTitle + iHeightofDescription + iHeightofPrice))
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

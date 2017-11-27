@@ -76,6 +76,7 @@ let kGetCartDetails = "products/get-cart"
 let kRemoveProductfromCart = "products/remove-product-from-cart"
 let kProductsbyCategoryID = "products-by-category"
 let kFeaturedData = "categories/featured"
+let kordersCreate = "orders/create"
 
 let kkeyproductTitle = "productTitle"
 let kkeyproductImage = "productImage"
@@ -92,6 +93,7 @@ let kkeyproductsCount = "productsCount"
 
 let kSignUP = "register"
 let kLogin = "login"
+let kGuestLogin = "register-guest"
 
 let kEditProfileAPI = "user-profile/update-profile"
 

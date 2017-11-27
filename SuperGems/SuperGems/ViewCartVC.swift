@@ -15,11 +15,18 @@ class ViewCartVC: UIViewController
     @IBOutlet weak var lblScreenTitle: UILabel!
     @IBOutlet var tblCart : UITableView!
     @IBOutlet weak var tblCartHeightCT : NSLayoutConstraint!
+    @IBOutlet weak var vwOrderPlaced : UIView!
+    var bPresent = Bool()
+    @IBOutlet weak var btnBack : UIButton!
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        if bPresent == true
+        {
+            btnBack.setImage(UIImage(named: "close_icon"), for: .normal)
+        }
         // Do any additional setup after loading the view.
         self.tblCart.estimatedRowHeight = 143;
         self.tblCart.rowHeight = UITableViewAutomaticDimension;
@@ -70,6 +77,16 @@ class ViewCartVC: UIViewController
                         {
                             self.arrCartData = NSMutableArray(array: dictemp.value(forKey: "data") as! NSArray)
                             
+                            var fCartTotal = CGFloat()
+                            for i in 0..<self.arrCartData.count
+                            {
+                                let dic = self.arrCartData[i] as! NSDictionary
+                                fCartTotal = fCartTotal + (dic[kkeyproductPrice] as! CGFloat)
+                            }
+                            
+                            self.lblCartTotal.text = "$\(fCartTotal)"
+                            self.lblScreenTitle.text = "YOUR BASKET (\(self.arrCartData.count) ITEM)"
+                            
                             if (CGFloat(self.arrCartData.count) * 143.0) < MainScreen.height
                             {
                                 self.tblCartHeightCT.constant = CGFloat(self.arrCartData.count)
@@ -78,7 +95,6 @@ class ViewCartVC: UIViewController
                             {
                                 self.tblCartHeightCT.constant =  MainScreen.height - 149
                             }
-                            
                             self.tblCart.reloadData()
                         }
                     }
@@ -166,11 +182,155 @@ class ViewCartVC: UIViewController
 
     }
     
+    func btnUpdateQuantity(sender:UIButton)
+    {
+        let intRow = sender.tag
+        let iDeleteId : Int = (arrCartData.object(at: intRow) as! NSDictionary).value(forKey: kkeyproductId) as! Int
+
+            ActionSheetStringPicker.show(withTitle: "Select Quantity", rows: ["1", "2", "3","4","5","6","7","8","9","10"], initialSelection: 0, doneBlock: {
+                picker, value, index in
+                
+                
+                print("value = \(value)")
+                print("index = \(index)")
+                print("picker = \(picker)")
+                let dic = UserDefaults.standard.value(forKey: kkeyLoginData)
+                let final  = NSKeyedUnarchiver .unarchiveObject(with: dic as! Data) as! NSDictionary
+                let token = final .value(forKey: "userToken")
+                let headers = ["Authorization":"Bearer \(token!)"]
+                
+                let url = kServerURL + kAddtoCart
+                let parameters: [String: Any] = ["product_id": iDeleteId, "qty":  "\(index!)"]
+                
+                showProgress(inView: self.view)
+                print("parameters:>\(parameters)")
+                request(url, method: .post, parameters:parameters, headers: headers).responseJSON { (response:DataResponse<Any>) in
+                    
+                    print(response.result.debugDescription)
+                    
+                    hideProgress()
+                    switch(response.result)
+                    {
+                    case .success(_):
+                        if response.result.value != nil
+                        {
+                            print(response.result.value!)
+                            
+                            if let json = response.result.value
+                            {
+                                let dictemp = json as! NSDictionary
+                                print("dictemp :> \(dictemp)")
+                                
+                                if dictemp.count > 0
+                                {
+                                    if let err  =  dictemp.value(forKey: kkeyError)
+                                    {
+                                        App_showAlert(withMessage: err as! String, inView: self)
+                                    }
+                                    else
+                                    {
+                                        self.arrCartData = NSMutableArray(array: dictemp.value(forKey: "data") as! NSArray)
+                                        
+                                        var fCartTotal = CGFloat()
+                                        for i in 0..<self.arrCartData.count
+                                        {
+                                            let dic = self.arrCartData[i] as! NSDictionary
+                                            fCartTotal = fCartTotal + (dic[kkeyproductPrice] as! CGFloat)
+                                        }
+                                        
+                                        self.lblCartTotal.text = "$\(fCartTotal)"
+                                        self.lblScreenTitle.text = "YOUR BASKET (\(self.arrCartData.count) ITEM)"
+                                        
+                                        if (CGFloat(self.arrCartData.count) * 143.0) < MainScreen.height
+                                        {
+                                            self.tblCartHeightCT.constant = CGFloat(self.arrCartData.count)
+                                        }
+                                        else
+                                        {
+                                            self.tblCartHeightCT.constant =  MainScreen.height - 149
+                                        }
+                                        self.tblCart.reloadData()
+                                    }
+                                }
+                                else
+                                {
+                                    App_showAlert(withMessage: dictemp[kkeyError]! as! String, inView: self)
+                                }
+                            }
+                        }
+                        break
+                        
+                    case .failure(_):
+                        print(response.result.error!)
+                        App_showAlert(withMessage: response.result.error.debugDescription, inView: self)
+                        break
+                    }
+                }
+                
+                return
+            }, cancel: { ActionStringCancelBlock in return }, origin: sender)
+    }
+    
     @IBAction func btnBackAction(_ sender: Any)
     {
-        _ = self.navigationController?.popViewController(animated: true)
+//
+        if bPresent == true
+        {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else
+        {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
 
+    @IBAction func btnProceedtoCheckoutAction(_ sender: Any)
+    {
+        let dic = UserDefaults.standard.value(forKey: kkeyLoginData)
+        let final  = NSKeyedUnarchiver .unarchiveObject(with: dic as! Data) as! NSDictionary
+        
+        let url = kServerURL + kordersCreate
+        showProgress(inView: self.view)
+        
+        let token = final .value(forKey: "userToken")
+        let headers = ["Authorization":"Bearer \(token!)"]
+        
+        request(url, method: .post, parameters:nil, headers: headers).responseJSON { (response:DataResponse<Any>) in
+            
+            print(response.result.debugDescription)
+            hideProgress()
+            
+            switch(response.result)
+            {
+            case .success(_):
+                if response.result.value != nil
+                {
+                    print(response.result.value!)
+                    
+                    if let json = response.result.value
+                    {
+                        let dictemp = json as! NSDictionary
+                        print("dictemp :> \(dictemp)")
+                        
+                        if (dictemp.value(forKey: "error") != nil)
+                        {
+                            let msg = ((dictemp.value(forKey: "error") as! NSDictionary) .value(forKey: "reason"))
+                            App_showAlert(withMessage: msg as! String, inView: self)
+                        }
+                        else
+                        {
+                            self.vwOrderPlaced.isHidden = false
+                        }
+                    }
+                }
+                break
+            case .failure(_):
+                print(response.result.error!)
+                App_showAlert(withMessage: response.result.error.debugDescription, inView: self)
+                break
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -180,7 +340,6 @@ class ViewCartVC: UIViewController
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension ViewCartVC: UITableViewDelegate,UITableViewDataSource
@@ -211,6 +370,9 @@ extension ViewCartVC: UITableViewDelegate,UITableViewDataSource
         cell.btnRemove.tag = indexPath.row
         cell.btnRemove.addTarget(self, action: #selector(self.btnRemoveAction(sender:)), for: .touchUpInside)
         
+        cell.btnQty.tag = indexPath.row
+        cell.btnQty.addTarget(self, action: #selector(self.btnUpdateQuantity(sender:)), for: .touchUpInside)
+
         return cell
     }
     
@@ -229,4 +391,6 @@ class viewCartCell: UITableViewCell
     @IBOutlet weak var lblQty: UILabel!
 
     @IBOutlet weak var btnRemove: UIButton!
+    @IBOutlet weak var btnQty: UIButton!
+
 }

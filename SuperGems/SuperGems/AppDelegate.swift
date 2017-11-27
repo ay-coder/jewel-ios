@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
         deviceUUID = (UIDevice.current.identifierForVendor?.uuidString)!
+        
+        print("deviceUUID :> \(deviceUUID)")
+
 
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         

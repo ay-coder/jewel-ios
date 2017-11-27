@@ -68,8 +68,14 @@ class SideMenuController: UIViewController, UITableViewDelegate, UITableViewData
         switch indexPath.row
         {
             case 0:
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                let rootVC = storyBoard.instantiateViewController(withIdentifier: "ViewCartVC") as! ViewCartVC
+                rootVC.bPresent = true
+                self.present(rootVC, animated: true)
                 break
             case 1:
+                UserDefaults.standard.set(false, forKey: kkeyisUserLogin)
+                UserDefaults.standard.synchronize()
                 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                 let rootVC = storyBoard.instantiateViewController(withIdentifier: "ViewController") as UIViewController
                 SJSwiftSideMenuController.pushViewController(rootVC, animated: true)
