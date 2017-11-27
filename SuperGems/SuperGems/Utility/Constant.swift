@@ -94,6 +94,8 @@ let kkeyproductsCount = "productsCount"
 let kSignUP = "register"
 let kLogin = "login"
 let kGuestLogin = "register-guest"
+let kforgotpassword = "forgotpassword"
+
 
 let kEditProfileAPI = "user-profile/update-profile"
 

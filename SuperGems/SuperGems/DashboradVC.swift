@@ -54,12 +54,54 @@ class DashboradVC: UIViewController
 
         self.tblFeatured.estimatedRowHeight = 143;
         self.tblFeatured.rowHeight = UITableViewAutomaticDimension;
-    }
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeDown.direction = UISwipeGestureRecognizerDirection.left
+        self.view.addGestureRecognizer(swipeDown)
 
+    }
+    func respondToSwipeGesture(gesture: UIGestureRecognizer)
+    {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            
+            switch swipeGesture.direction
+            {
+            case UISwipeGestureRecognizerDirection.right:
+                
+                if iSelectedTab > 1
+                {
+                    iSelectedTab = iSelectedTab - 1
+                    self.SetButtonSelected(iTag: iSelectedTab)
+                }
+                print("Swiped right")
+                
+            case UISwipeGestureRecognizerDirection.left:
+                if iSelectedTab < 3
+                {
+                    iSelectedTab = iSelectedTab + 1
+                    self.SetButtonSelected(iTag: iSelectedTab)
+
+                }
+                print("Swiped left")
+            default:
+                break
+            }
+        }
+    }
+    
     func SetButtonSelected(iTag: Int)
     {
+        iSelectedTab = iTag
+ 
         if iTag == 1
         {
+            
             btnFeatured.isSelected = true
             btnWhatsNew.isSelected = false
             btnCategories.isSelected = false

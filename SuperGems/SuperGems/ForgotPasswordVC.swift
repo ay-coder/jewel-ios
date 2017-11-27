@@ -31,6 +31,68 @@ class ForgotPasswordVC: UIViewController
     
     @IBAction func btnforgotPWDAction(_ sender: Any)
     {
+        if (self.txtEmail.text?.isEmpty)!
+        {
+            App_showAlert(withMessage: "Please enter email address", inView: self)
+        }
+        else
+        {
+        let url = kServerURL + kforgotpassword
+        let parameters: [String: Any] = ["email": self.txtEmail.text!]
+        
+        showProgress(inView: self.view)
+        print("parameters:>\(parameters)")
+        request(url, method: .post, parameters:parameters).responseJSON { (response:DataResponse<Any>) in
+            
+            print(response.result.debugDescription)
+            
+            hideProgress()
+            switch(response.result)
+            {
+            case .success(_):
+                if response.result.value != nil
+                {
+                    print(response.result.value!)
+                    
+                    if let json = response.result.value
+                    {
+                        let dictemp = json as! NSDictionary
+                        print("dictemp :> \(dictemp)")
+                        
+                        if dictemp.count > 0
+                        {
+                            if let err  =  dictemp.value(forKey: kkeyError)
+                            {
+                                App_showAlert(withMessage: err as! String, inView: self)
+                            }
+                            else
+                            {
+                                
+                                let alertView = UIAlertController(title: Application_Name, message: "New Password send on Register Email Id", preferredStyle: .alert)
+                                let OKAction = UIAlertAction(title: "OK", style: .default)
+                                { (action) in
+                                    _ =  self.navigationController?.popViewController(animated: true)
+                                }
+                                alertView.addAction(OKAction)
+                                self.present(alertView, animated: true, completion: nil)
+                            }
+                        }
+                        else
+                        {
+                            App_showAlert(withMessage: dictemp[kkeyError]! as! String, inView: self)
+                        }
+                    }
+                }
+                break
+                
+            case .failure(_):
+                print(response.result.error!)
+                App_showAlert(withMessage: response.result.error.debugDescription, inView: self)
+                break
+            }
+            }
+
+    }
     }
 
     /*
