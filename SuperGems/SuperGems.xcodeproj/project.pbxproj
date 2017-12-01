@@ -119,6 +119,7 @@
 		D3D032421FC1F0320090A8F8 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3D0322F1FC1F0320090A8F8 /* Raleway-Thin.ttf */; };
 		D3D032431FC1F0320090A8F8 /* Raleway-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3D032301FC1F0320090A8F8 /* Raleway-ThinItalic.ttf */; };
 		D3D032441FC1F0320090A8F8 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3D032311FC1F0320090A8F8 /* SIL Open Font License.txt */; };
+		D3F2F2761FD1C55100E374C2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F2F2751FD1C55100E374C2 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -271,6 +272,7 @@
 		D3D0322F1FC1F0320090A8F8 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
 		D3D032301FC1F0320090A8F8 /* Raleway-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ThinItalic.ttf"; sourceTree = "<group>"; };
 		D3D032311FC1F0320090A8F8 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
+		D3F2F2751FD1C55100E374C2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3F2F2761FD1C55100E374C2 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +301,7 @@
 			children = (
 				D367CC6A1FC15224001AFFF4 /* SuperGems */,
 				D367CC691FC15224001AFFF4 /* Products */,
+				D3F2F2741FD1C55100E374C2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -568,6 +572,14 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		D3F2F2741FD1C55100E374C2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3F2F2751FD1C55100E374C2 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -600,6 +612,7 @@
 				TargetAttributes = {
 					D367CC671FC15224001AFFF4 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 2NK8U47VYY;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Manual;
 					};
@@ -820,7 +833,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "fa55ac8a-530e-4e86-8bef-5410367e8d01";
+				PROVISIONING_PROFILE = "3d984644-685e-440e-b100-750da8801a8d";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -865,7 +878,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "fa55ac8a-530e-4e86-8bef-5410367e8d01";
+				PROVISIONING_PROFILE = "3d984644-685e-440e-b100-750da8801a8d";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -879,12 +892,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wve, LLC (2NK8U47VYY)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2NK8U47VYY;
 				INFOPLIST_FILE = SuperGems/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dave.SuperGems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3d984644-685e-440e-b100-750da8801a8d";
 				PROVISIONING_PROFILE_SPECIFIER = GemDist;
 				SWIFT_OBJC_BRIDGING_HEADER = "SuperGems/SuperGems-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -899,12 +913,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Wve, LLC (2NK8U47VYY)";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 2NK8U47VYY;
 				INFOPLIST_FILE = SuperGems/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dave.SuperGems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3d984644-685e-440e-b100-750da8801a8d";
 				PROVISIONING_PROFILE_SPECIFIER = GemDist;
 				SWIFT_OBJC_BRIDGING_HEADER = "SuperGems/SuperGems-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

@@ -46,7 +46,6 @@ class DashboradVC: UIViewController
         super.viewDidLoad()
         iSelectedTab = 1
         self.navigationController?.navigationBar.isHidden = true
-        self.SetButtonSelected(iTag: iSelectedTab)
         
         // Do any additional setup after loading the view.
         SJSwiftSideMenuController.enableDimBackground = true
@@ -62,8 +61,14 @@ class DashboradVC: UIViewController
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeDown.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeDown)
-
     }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        self.SetButtonSelected(iTag: iSelectedTab)
+    }
+    
+    
     func respondToSwipeGesture(gesture: UIGestureRecognizer)
     {
         
@@ -408,7 +413,8 @@ extension DashboradVC : UICollectionViewDataSource ,UICollectionViewDelegate,UIC
         
         if  collectionView == self.clCategory
         {
-            
+            let dictFeaturedData = NSMutableDictionary(dictionary: self.arrCategoryData[indexPath.section]  as! NSDictionary)
+            self.arrproducts = NSMutableArray(array: dictFeaturedData["products"] as! NSArray)
             let dic = self.arrproducts[indexPath.row] as! NSDictionary
             let fontAttributes = [NSFontAttributeName: UIFont (name: "Raleway-Regular", size: 17)]
             var size = (dic[kkeyproductTitle] as! NSString).size(attributes: fontAttributes)
@@ -465,8 +471,8 @@ extension DashboradVC : UICollectionViewDataSource ,UICollectionViewDelegate,UIC
             if arrCategorySectionSelection[section] as! String == kYES
             {
                 let dictFeaturedData = NSMutableDictionary(dictionary: self.arrCategoryData[section]  as! NSDictionary)
-                self.arrproducts = NSMutableArray(array: dictFeaturedData["products"] as! NSArray)
-                return self.arrproducts.count
+                let arrtempcount = NSMutableArray(array: dictFeaturedData["products"] as! NSArray)
+                return arrtempcount.count
             }
         }
         return 0
@@ -490,6 +496,8 @@ extension DashboradVC : UICollectionViewDataSource ,UICollectionViewDelegate,UIC
         }
         else
         {
+            let dictFeaturedData = NSMutableDictionary(dictionary: self.arrCategoryData[indexPath.section]  as! NSDictionary)
+            self.arrproducts = NSMutableArray(array: dictFeaturedData["products"] as! NSArray)
             let dic = self.arrproducts[indexPath.row] as! NSDictionary
             let strurl = dic[kkeyproductImage] as! String
             let url  = URL.init(string: strurl)
@@ -510,7 +518,7 @@ extension DashboradVC : UICollectionViewDataSource ,UICollectionViewDelegate,UIC
             case UICollectionElementKindSectionHeader:
                 let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "CategoryCollectionReusableView", for: indexPath) as! CategoryCollectionReusableView
             
-                let dic = self.arrCategoryData[indexPath.row] as! NSDictionary
+                let dic = self.arrCategoryData[indexPath.section] as! NSDictionary
             
                 let strurl = dic[kkeycategoryImage] as! String
                 let url  = URL.init(string: strurl)

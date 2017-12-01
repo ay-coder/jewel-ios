@@ -72,6 +72,8 @@ class ViewCartVC: UIViewController
                         {
                             let msg = ((dictemp.value(forKey: "error") as! NSDictionary) .value(forKey: "reason"))
                             App_showAlert(withMessage: msg as! String, inView: self)
+                            self.arrCartData = NSMutableArray()
+                            self.tblCart.reloadData()
                         }
                         else
                         {

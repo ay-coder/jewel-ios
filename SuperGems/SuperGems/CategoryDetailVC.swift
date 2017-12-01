@@ -18,13 +18,16 @@ class CategoryDetailVC: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        // Do any additional setup after loading the view.
         lblScreenTitle.text = dicofSelectedCategory[kkeycategoryTitle] as? String
-
-        self.getProductDetialsData()
     }
 
+    override func viewWillAppear(_ animated: Bool)
+    {
+        self.getProductDetialsData()
+    }
+    
     //MARK: Get Product Data
     func getProductDetialsData()
     {
