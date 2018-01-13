@@ -66,8 +66,8 @@ let kYES = "YES"
 
 let kFBAPPID = "128398547683260"
 
-
-let kServerURL = "http://52.66.73.127/jewel/public/api/"
+//let kServerURL = "http://52.66.73.127/jewel/public/api/"
+let kServerURL = "http://supergemsjewelry.com/api/"
 
 let kWhatsNewAPI = "products"
 let kcategories = "categories"
