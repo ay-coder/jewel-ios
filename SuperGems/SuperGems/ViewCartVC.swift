@@ -14,7 +14,6 @@ class ViewCartVC: UIViewController
     @IBOutlet weak var lblCartTotal: UILabel!
     @IBOutlet weak var lblScreenTitle: UILabel!
     @IBOutlet var tblCart : UITableView!
-    @IBOutlet weak var tblCartHeightCT : NSLayoutConstraint!
     @IBOutlet weak var vwOrderPlaced : UIView!
     var bPresent = Bool()
     @IBOutlet weak var btnBack : UIButton!
@@ -89,14 +88,14 @@ class ViewCartVC: UIViewController
                             self.lblCartTotal.text = "$\(fCartTotal)"
                             self.lblScreenTitle.text = "YOUR BASKET (\(self.arrCartData.count) ITEM)"
                             
-                            if (CGFloat(self.arrCartData.count) * 143.0) < MainScreen.height
+                            /*if (CGFloat(self.arrCartData.count) * 143.0) < MainScreen.height
                             {
                                 self.tblCartHeightCT.constant = CGFloat(self.arrCartData.count)
                             }
                             else
                             {
                                 self.tblCartHeightCT.constant =  MainScreen.height - 149
-                            }
+                            }*/
                             self.tblCart.reloadData()
                         }
                     }
@@ -243,14 +242,14 @@ class ViewCartVC: UIViewController
                                         self.lblCartTotal.text = "$\(fCartTotal)"
                                         self.lblScreenTitle.text = "YOUR BASKET (\(self.arrCartData.count) ITEM)"
                                         
-                                        if (CGFloat(self.arrCartData.count) * 143.0) < MainScreen.height
+                                       /* if (CGFloat(self.arrCartData.count) * 143.0) < MainScreen.height
                                         {
                                             self.tblCartHeightCT.constant = CGFloat(self.arrCartData.count)
                                         }
                                         else
                                         {
                                             self.tblCartHeightCT.constant =  MainScreen.height - 149
-                                        }
+                                        }*/
                                         self.tblCart.reloadData()
                                     }
                                 }

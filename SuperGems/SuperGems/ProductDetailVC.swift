@@ -82,7 +82,7 @@ class ProductDetailVC: UIViewController
         
         clHeightCT.constant = CGFloat(268 * iImageCount)
         
-        scrHeightCT.constant = clHeightCT.constant + 200
+        scrHeightCT.constant = clHeightCT.constant + 260
         clImages.reloadData()
     }
 
